@@ -4,16 +4,11 @@
 
 def cat_matrices2D(mat1, mat2, axis=0):
     '''cat matrice2D'''
-    if axis == 0:
-        return [
-            mat1[i] for i in range(len(mat1))
-        ] + [
-            mat2[i] for i in range(len(mat2))
-        ]
-    elif axis == 1:
-        return [
-            mat1[i] + mat2[i]
-            for i in range(len(mat1))
-        ]
+    if not axis:
+        if len(mat1[0]) != len(mat2[0]):
+            return None
+        return [i.copy() for i in mat1] + [i.copy() for i in mat2]
     else:
-        return None
+        if len(mat1) != len(mat2):
+            return None
+        return [mat1[i].copy() + mat2[i].copy() for i in range(len(mat1))]
