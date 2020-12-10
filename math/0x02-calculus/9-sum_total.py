@@ -4,6 +4,6 @@
 
 def summation_i_squared(n):
     '''summation_i_squared'''
-    if (type(n) is not int) or (n < 1):
+    if (type(n) != int) or (n < 1):
         return None
-    return sum(map(lambda a: a ** 2, range(n + 1)))
+    return sum(map(lambda a: a ** 2, range(n + 1))) or None
