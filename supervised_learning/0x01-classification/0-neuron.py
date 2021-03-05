@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+'''Neuron'''
+import numpy as np
+
+
+class Neuron:
+    '''Neuron defines a single neuron
+    performing binary classification'''
+
+    def __init__(self, nx):
+        '''Class Constructor'''
+        if not type(nx) is int:
+            raise TypeError('TypeError')
+        elif nx < 1:
+            raise ValueError('nx must be a positive integer')
+        self.W = np.random.normal(size=(1, nx))
+        self.b = 0
+        self.A = 0
