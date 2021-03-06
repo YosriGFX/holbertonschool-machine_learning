@@ -17,9 +17,9 @@ class DeepNeuralNetwork:
         elif (
             type(layers) != list
         ) or (
-            min(layers) < 1
-        ) or (
             len(layers) == 0
+        ) or (
+            min(layers) < 1
         ):
             raise TypeError("layers must be a list of positive integers")
         else:
