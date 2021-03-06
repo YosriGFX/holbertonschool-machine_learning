@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 '''exponential'''
 
+
 class Exponential():
     '''Represent represents an
     exponential distribution'''
@@ -10,7 +11,7 @@ class Exponential():
         if data is None:
             if lambtha <= 0:
                 raise ValueError('lambtha must be a positive value')
-           else:
+            else:
                 self.lambtha = float(lambtha)
         else:
             if type(data) is not list:
