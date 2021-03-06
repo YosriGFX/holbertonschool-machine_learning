@@ -52,6 +52,7 @@ class Normal():
         '''Calculates the value of the CDF
         for a given x-value'''
         a = self.mean
+
         def erf(a):
             '''catch error'''
             an = (
