@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 '''Neuron'''
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 class Neuron:
@@ -109,19 +110,19 @@ class Neuron:
             if (step < 0) or (step > iterations):
                 raise ValueError('step must be positive and <= iterations')
         allCost, stepper = [], 0
-        for _ in range(iterations):
+        for i in range(iterations):
             A = self.forward_prop(X)
             self.gradient_descent(X, Y, A, alpha)
             allCost.append(self.cost(Y, A))
-            if verbose and (_ - 1 == stepper - 1):
+            if verbose and (i - 1 == stepper - 1):
                 print(
                     'Cost after {} iterations: {}'.format(
-                        _, allCost[_]
+                        i, allCost[i]
                     )
                 )
                 stepper += step
         A, cost = self.evaluate(X, Y)
-        _ += 1
+        i += 1
         print("Cost after {} iterations: {}".format(i, cost))
         if graph:
             plt.plot(allCost)
