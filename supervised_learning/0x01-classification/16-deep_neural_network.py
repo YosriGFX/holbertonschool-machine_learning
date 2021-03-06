@@ -17,7 +17,7 @@ class DeepNeuralNetwork:
         elif (
             type(layers) != list
         ) or (
-            len(layers) == 0
+            len(layers) < 1
         ) or (
             min(layers) < 1
         ):
