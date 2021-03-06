@@ -101,9 +101,22 @@ class NeuralNetwork():
     def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
         '''Calculates one pass of gradient
         descent on the neuron'''
-        dz1 = np.dot(self.__W2.T, (A2 - Y)) * A1 * (1 - A1)
-        dz2 = (A2 - Y)
-        self.__W2 -= alpha * np.dot(dz2, A1.T) / A1.shape[1]
-        self.__b2 -= alpha * dz2.mean(axis=1, keepdims=True)
-        self.__W1 -= alpha * np.dot(dz1, X.T) / X.shape[1]
-        self.__b1 -= alpha * dz1.mean(axis=1, keepdims=True)
+        get_once = np.dot(
+            self.__W2.T, (A2 - Y)
+        ) * A1 * (1 - A1)
+        self.__W1 += -alpha * np.dot(
+            get_once, X.T
+        ) / X.shape[1]
+        self.__b1 += np.mean(
+            get_once,
+            axis=1,
+            keepdims=True
+        ) * -alpha
+        self.__W2 += -alpha * np.dot(
+            (A2 - Y), A1.T
+        ) / A1.shape[1]
+        self.__b2 += np.mean(
+            (A2 - Y),
+            axis=1,
+            keepdims=True
+        ) * -alpha
