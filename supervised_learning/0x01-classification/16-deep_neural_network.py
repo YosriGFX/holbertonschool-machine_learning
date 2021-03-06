@@ -14,7 +14,13 @@ class DeepNeuralNetwork:
             raise TypeError('nx must be an integer')
         elif nx < 1:
             raise ValueError('nx must be a positive integer')
-        elif (type(layers) != list) or (min(layers) < 1):
+        elif (
+            type(layers) != list
+        ) or (
+            min(layers) < 1
+        ) or (
+            len(layers) == 0
+        ):
             raise TypeError("layers must be a list of positive integers")
         else:
             self.nx = nx
