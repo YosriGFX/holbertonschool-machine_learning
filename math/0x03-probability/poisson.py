@@ -39,3 +39,18 @@ class Poisson():
                 )
         except Exception:
             return 0
+
+    def cdf(self, k):
+        '''Calculates the value of the CDF
+        for a given number of “successes”'''
+        try:
+            k = int(k)
+            if k > 0:
+                cdf = 0
+                for i in range(0, k + 1):
+                    cdf += self.pmf(i)
+                return cdf
+            else:
+                return 0
+        except Exception:
+            return 0
