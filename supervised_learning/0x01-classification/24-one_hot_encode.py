@@ -4,7 +4,8 @@ import numpy as np
 
 
 def one_hot_encode(Y, classes):
-    '''converts a numeric label vector into a one-hot matrix'''
+    '''converts a numeric label
+    vector into a one-hot matrix'''
     if (
         Y is not None
     ) and (
