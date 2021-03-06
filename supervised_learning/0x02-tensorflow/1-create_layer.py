@@ -5,7 +5,7 @@ import tensorflow as tf
 
 def create_layer(prev, n, activation):
     '''Function that Crreate Layer'''
-    layer = tf.layers.Dense(
+    return tf.layers.Dense(
         n,
         activation,
         name='layer',
@@ -15,4 +15,3 @@ def create_layer(prev, n, activation):
             )
         )
     )(prev)
-    return layer
