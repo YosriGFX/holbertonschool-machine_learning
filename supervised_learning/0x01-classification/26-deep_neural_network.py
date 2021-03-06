@@ -6,7 +6,7 @@ import pickle
 
 
 class DeepNeuralNetwork:
-    '''Deep Neural Network defines
+    '''Deep Neural Network defnes
     deep neural network performing
     binary classification'''
 
