@@ -199,7 +199,7 @@ class DeepNeuralNetwork:
             with open(filename, 'wb') as file:
                 pickle.dump(self, file)
         else:
-            return
+            return None
 
     @staticmethod
     def load(filename):
