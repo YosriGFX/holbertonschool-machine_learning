@@ -43,7 +43,7 @@ class Neuron:
 
     def sigmoid(self, X):
         '''Sigmoid function'''
-        return 1.0/(1.0 + np.exp(-X))
+        return 1 / (1 + np.exp(-X))
 
     def cost(self, Y, A):
         '''Calculates the cost of the
@@ -66,10 +66,11 @@ class Neuron:
 
     def evaluate(self, X, Y):
         '''Evaluates the neuron’s predictions'''
-        propagation = self.forward_prop(X)
-        self.__A = np.where(propagation >= 0.5, 1, 0)
-        cost = self.cost(Y, propagation)
-        return (self.__A, cost)
+        self.__A = self.forward_prop(X)
+        return (
+            np.where(self.__A >= 0.5, 1, 0),
+            self.cost(Y, self.__A)
+        )
 
     def gradient_descent(self, X, Y, A, alpha=0.05):
         '''Calculates one pass of gradient
@@ -89,13 +90,15 @@ class Neuron:
         '''Trains the neuron'''
         if type(iterations) != int:
             raise TypeError('iterations must be an integer')
-        elif iterations <= 0:
+        if iterations <= 0:
             raise ValueError('iterations must be a positive integer')
         if type(alpha) != float:
             raise TypeError('alpha must be a float')
-        elif alpha <= 0:
+        if alpha <= 0:
             raise ValueError('alpha must be positive')
-        for __ in range(iterations):
-            A = self.forward_prop(X)
-            self.gradient_descent(X, Y, A, alpha)
+        [
+            self.gradient_descent(
+                X, Y, self.forward_prop(X), alpha
+            ) for _ in range(iterations)
+        ]
         return self.evaluate(X, Y)
