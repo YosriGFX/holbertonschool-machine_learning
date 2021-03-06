@@ -196,8 +196,8 @@ class DeepNeuralNetwork:
         if type(filename) is str:
             if filename[-4:] != '.pkl':
                 filename = filename[:] + '.pkl'
-            file = open(filename, 'wb')
-            pickle.dump(self, file)
+            with open(filename, 'wb') as file:
+                pickle.dump(self, file)
         else:
             return
 
@@ -206,7 +206,7 @@ class DeepNeuralNetwork:
         '''Loads a pickled
         DeepNeuralNetwork object'''
         try:
-            file = open(filename, 'rb')
-            return pickle.load(file)
+            with open(filename, 'rb') as file:
+                return pickle.load(file)
         except Exception:
             return None
