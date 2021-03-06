@@ -104,20 +104,25 @@ class NeuralNetwork():
         self.__W1 = np.add(
             self.W1,
             -alpha * np.matmul(
-                A1 - Y,
-                X.T
-            ) / X.shape[1]
-        )
-        self.__b1 -= np.mean(
                 (
                     np.dot(
                         self.__W2.T,
                         (A2 - Y)
                     ) * A1 * (1 - A1)
                 ),
-                axis=1,
-                keepdims=True
-            ) * -alpha
+                X.T
+            ) / X.shape[1]
+        )
+        self.__b1 += np.mean(
+            (
+                np.dot(
+                    self.__W2.T,
+                    (A2 - Y)
+                ) * A1 * (1 - A1)
+            ),
+            axis=1,
+            keepdims=True
+        ) * -alpha
         self.__W2 = np.add(
             self.W2,
             -alpha * np.matmul(
@@ -126,5 +131,7 @@ class NeuralNetwork():
             ) / self.A1.shape[1]
         )
         self.__b2 += np.mean(
-                (A2 - Y), axis=1, keepdims=True
-            ) * -alpha
+            (A2 - Y),
+            axis=1,
+            keepdims=True
+        ) * -alpha
