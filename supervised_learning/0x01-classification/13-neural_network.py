@@ -117,7 +117,7 @@ class NeuralNetwork():
                 ),
                 axis=1,
                 keepdims=True
-            ) * +alpha
+            ) * -alpha
         self.__W2 = np.add(
             self.W2,
             -alpha * np.matmul(
