@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''Adam'''
+'''Adam File'''
 import numpy as np
 
 
@@ -40,5 +40,4 @@ def update_variables_Adam(
             np.sqrt(sC) + epsilon
         )
     )
-
     return newgrad, vTime, sTime
