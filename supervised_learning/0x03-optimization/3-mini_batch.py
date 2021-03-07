@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 '''Mini-Batch'''
+import tensorflow as tf
+
+shuffle_data = __import__('2-shuffle_data').shuffle_data
 
 
 def train_mini_batch(
@@ -16,3 +19,4 @@ def train_mini_batch(
     a loaded neural network
     model using mini-batch
     gradient descent'''
+    return None
