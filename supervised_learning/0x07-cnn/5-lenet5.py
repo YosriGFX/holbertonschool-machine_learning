@@ -37,13 +37,13 @@ def lenet5(X):
         84,
         activation='relu',
         kernel_initializer='he_normal'
-    )(layer)
+    )(layer)zzz
     layer = K.layers.Dense(
         10,
         activation='softmax',
         kernel_initializer='he_normal'
     )(layer)
-    kerasModel = K.model(X, layer)
+    kerasModel = K.Model(X, layer)
     kerasModel.compile(
         'Adam',
         metrics=['accuracy'],
