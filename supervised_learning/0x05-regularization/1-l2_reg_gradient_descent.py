@@ -14,7 +14,7 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
     )
     for t in reversed(range(1, L + 1)):
         a = cache['A' + str(t)]
-        b = cache['A' + str(t - 1)]
+        a1 = cache['A' + str(t - 1)]
         b = weightBias['b' + str(t)]
         if t == L:
             dzi = np.subtract(
@@ -23,12 +23,10 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
         else:
             w = weightBias['W' + str(t + 1)]
             dzi = np.multiply(
-                1 - (a**2),
+                1 - (a ** 2),
                 np.matmul(w.T, dzi)
             )
-        dwi = np.matmul(
-            dzi, b.T
-        ) / Y.shape[1]
+        dwi = np.matmul(dzi, a1.T) / Y.shape[1]
         dbi = np.mean(
             dzi, axis=1, keepdims=True
         )
