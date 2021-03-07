@@ -13,7 +13,6 @@ def train_model(
     verbose=True,
     shuffle=False
 ):
-    
     '''Function That trains a model
     using mini-batch gradient descent
     to also analyze validaiton data'''
