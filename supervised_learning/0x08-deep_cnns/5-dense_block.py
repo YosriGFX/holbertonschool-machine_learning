@@ -9,7 +9,7 @@ def dense_block(X, nb_filters, growth_rate, layers):
     Convolutional Networks'''
     def Converser(X, k, f, val='valid', sc=1):
         '''Layer Converser'''
-        layer = Conv2D(
+        layer = K.layers.Conv2D(
             k,
             f,
             sC,
@@ -19,7 +19,6 @@ def dense_block(X, nb_filters, growth_rate, layers):
         return layer
     MaxPooling2D = K.layers.MaxPooling2D
     AveragePooling2D = K.layers.AveragePooling2D
-    Conv2D = K.layers.Conv2D
     Dense = K.layers.Dense
     BatchNorm = K.layers.BatchNormalization
     Activation = K.layers.Activation
