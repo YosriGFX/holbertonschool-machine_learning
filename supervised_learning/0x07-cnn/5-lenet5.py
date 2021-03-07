@@ -37,7 +37,7 @@ def lenet5(X):
         84,
         activation='relu',
         kernel_initializer='he_normal'
-    )(layer)zzz
+    )(layer)
     layer = K.layers.Dense(
         10,
         activation='softmax',
