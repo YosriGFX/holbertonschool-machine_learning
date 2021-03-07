@@ -12,7 +12,7 @@ def dense_block(X, nb_filters, growth_rate, layers):
         layer = K.layers.Conv2D(
             k,
             f,
-            sC,
+            sc,
             padding=val,
             kernel_initializer='he_normal'
         )(X)
