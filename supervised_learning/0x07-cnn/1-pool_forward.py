@@ -14,7 +14,7 @@ def pool_forward(A_prev, kernel_shape, stride=(1, 1), mode='max'):
         imgH-kh
     ) // sh + 1, (
         imgw-kw
-    )// sw + 1
+    ) // sw + 1
     out = np.zeros(
         (m, imgH, imgw, c)
     )
@@ -23,20 +23,20 @@ def pool_forward(A_prev, kernel_shape, stride=(1, 1), mode='max'):
             if mode == 'avg':
                 out[:, i, j, :] = np.average(
                     A_prev[
-                    :,
-                    i * sh:i * sh + kh,
-                    j * sw:j * sw + kw,
-                    :
+                        :,
+                        i * sh:i * sh + kh,
+                        j * sw:j * sw + kw,
+                        :
                     ],
                     axis=(1, 2)
                 )
             if mode == 'max':
                 out[:, i, j, :] = np.max(
                     A_prev[
-                    :,
-                    i * sh:i * sh + kh,
-                    j * sw:j * sw + kw,
-                    :
+                        :,
+                        i * sh:i * sh + kh,
+                        j * sw:j * sw + kw,
+                        :
                     ],
                     axis=(1, 2)
                 )
