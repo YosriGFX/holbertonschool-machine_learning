@@ -12,7 +12,11 @@ def likelihood(x, n, P):
             if x <= n:
                 if isinstance(P, np.ndarray)\
                   and len(P.shape) == 1 and P.shape[0] >= 1:
-                    if np.any(P < 1) and np.any(P > 0):
+                    if np.any(P > 1) or np.any(P < 0):
+                        raise ValueError(
+                            'All values in P must be in the range [0, 1]'
+                        )
+                    else:
                         com = np.math.factorial(
                             n
                         ) / (
@@ -23,10 +27,6 @@ def likelihood(x, n, P):
                         ) * pow(
                             1 - P,
                             n - x
-                        )
-                    else:
-                        raise ValueError(
-                            'All values in P must be in the range [0, 1]'
                         )
                 else:
                     raise TypeError('P must be a 1D numpy.ndarray')
