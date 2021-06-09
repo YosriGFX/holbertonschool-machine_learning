@@ -26,14 +26,11 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
                                         or abs(L-tmp) <= tol:
                                     print(
                                         'Log Likelihood after \
-{} iterations: {}'.format(
-                                            a, L
-                                        )
+{} iterations: {}'.format(a, L)
                                     )
                             if abs(L-tmp) <= tol:
                                 break
                             tmp = L
-
                         return pi, m, S, g, L
                     else:
                         return None, None, None, None, None
