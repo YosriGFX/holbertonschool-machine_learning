@@ -12,6 +12,7 @@ def new_m(matrix, a, b):
         for i in range(len(matrix)) if i != b
     ]
 
+
 def determinant(matrix):
     '''Calculates the determinant of a matrix'''
     if len(matrix) > 0:
