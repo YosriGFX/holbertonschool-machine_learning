@@ -12,7 +12,7 @@ def likelihood(x, n, P):
             if x <= n:
                 if isinstance(P, np.ndarray)\
                   and len(P.shape) == 1 and P.shape[0] >= 1:
-                    if np.any(P < 1) and np.any(P >= 0):
+                    if np.any(P < 1) and np.any(P > 0):
                         com = np.math.factorial(
                             n
                         ) / (
