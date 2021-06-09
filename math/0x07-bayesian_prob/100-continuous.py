@@ -9,7 +9,7 @@ def posterior(x, n, p1, p2):
     the probability of developing severe side effects
     falls within a specific range given the data'''
     if isinstance(n, int) and n >= 1:
-        if isinstance(x, int) or x >= 0:
+        if isinstance(x, int) and x >= 0:
             if x <= n:
                 if isinstance(p1, float) and p1 >= 0 and p1 <= 1:
                     if isinstance(p2, float) and p2 >= 0 and p2 <= 1:
