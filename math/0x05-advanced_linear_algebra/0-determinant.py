@@ -2,6 +2,16 @@
 '''Determinant'''
 
 
+def new_m(matrix, a, b):
+    '''new_m'''
+    return [
+        [
+            matrix[i][j] for j
+            in range(len(matrix[i])) if j != a
+        ]
+        for i in range(len(matrix)) if i != b
+    ]
+
 def determinant(matrix):
     '''Calculates the determinant of a matrix'''
     if len(matrix) > 0:
@@ -20,13 +30,7 @@ def determinant(matrix):
                     Determinant = 0
                     for a in range(len(matrix[0])):
                         Determinant += matrix[0][a] * determinant(
-                            [
-                                [
-                                    matrix[i][j] for j
-                                    in range(len(matrix[i])) if j != a
-                                ]
-                                for i in range(1, len(matrix))
-                            ]
+                            new_m(matrix, a, 0)
                         ) * ((-1) ** a)
                     return Determinant
             else:
