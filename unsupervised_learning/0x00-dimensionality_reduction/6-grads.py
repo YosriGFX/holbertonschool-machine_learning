@@ -11,14 +11,13 @@ def grads(Y, P):
     dY = np.zeros(
         (a, n_dim)
     )
+    b = np.expand_dims(
+        ((P - Q) * num).T,
+        axis=2
+    )
     for i in range(a):
         diff = Y[i, :] - Y
         dY[i, :] = np.sum(
-            (
-                np.expand_dims(
-                    ((P - Q) * num).T,
-                    axis=2
-                )[i, :] * diff
-            ), 0
+            (b[i, :] * diff), 0
         )
     return dY, Q
