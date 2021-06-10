@@ -6,10 +6,14 @@ import numpy as np
 def deep_rnn(rnn_cells, X, h_0):
     '''performs forward propagation for a deep RNN'''
     a, m, i = X.shape
-    l = h_0.shape[0]
     h = h_0.shape[2]
     H = np.zeros(
-        (a + 1, l, m, h)
+        (
+            a + 1,
+            h_0.shape[0],
+            m,
+            h
+        )
     )
     h, o = rnn_cells[-1].Wy.shape
     Y = np.zeros(
