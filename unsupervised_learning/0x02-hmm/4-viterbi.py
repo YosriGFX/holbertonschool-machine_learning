@@ -4,6 +4,7 @@ import numpy as np
 
 
 def validator(Observation, Emission, Transition, Initial):
+    '''validator'''
     if not isinstance(Observation, np.ndarray) or len(Observation.shape) != 1:
         return False
     if not isinstance(Emission, np.ndarray) or len(Emission.shape) != 2:
@@ -34,7 +35,9 @@ def viterbi(Observation, Emission, Transition, Initial):
         Viterbi = np.zeros((N, M))
         a = np.zeros((N, M))
         a[:, 0] = 0
-        Viterbi[:, 0] = np.multiply(Initial[:, 0], Emission[:, Observation[0]])
+        Viterbi[:, 0] = np.multiply(
+            Initial[:, 0], Emission[:, Observation[0]]
+        )
         for M in range(1, M):
             b = Viterbi[:, M - 1] * Transition.M
             c = np.amax(b, axis=1)
