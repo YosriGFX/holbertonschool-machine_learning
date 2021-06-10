@@ -19,7 +19,7 @@ class BidirectionalCell:
         '''softmax activation function'''
         Exp = np.exp(h)
         Exp = Exp / np.sum(
-            Exp, 1, keepdims=True
+            Exp, -1, keepdims=True
         )
         return Exp
 
