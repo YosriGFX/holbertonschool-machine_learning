@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""  2. Answer Questions  """
+'''2. Answer Questions'''
 import tensorflow as tf
 import tensorflow_hub as hub
 from transformers import BertTokenizer
 
 
 def answer_loop(reference):
-    """function that answers questions from a reference text"""
+    '''answers questions from a reference text'''
     tz = BertTokenizer.from_pretrained(
         'bert-large-uncased-whole-word-masking-finetuned-squad'
     )
