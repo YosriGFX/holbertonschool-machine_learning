@@ -39,7 +39,7 @@ def viterbi(Observation, Emission, Transition, Initial):
             Initial[:, 0], Emission[:, Observation[0]]
         )
         for M in range(1, M):
-            b = Viterbi[:, M - 1] * Transition.M
+            b = Viterbi[:, M - 1] * Transition.T
             c = np.amax(b, axis=1)
             Viterbi[:, M] = c * Emission[:, Observation[M]]
             a[:, M - 1] = np.argmax(b, axis=1)
