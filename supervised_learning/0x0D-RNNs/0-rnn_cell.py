@@ -12,6 +12,7 @@ class RNNCell:
         self.bh = np.zeros((1, h))
         self.by = np.zeros((1, o))
 
+    @staticmethod
     def softmax(h):
         '''softmax activation function'''
         Exp = np.exp(h)
