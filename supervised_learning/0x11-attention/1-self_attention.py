@@ -4,7 +4,8 @@ import tensorflow as tf
 
 
 class SelfAttention(tf.keras.layers.Layer):
-    '''calculate the attention for machine translation based on PDF'''
+    '''calculate the attention for machine
+    translation based on PDF'''
     def __init__(self, units):
         '''Class constructor'''
         super(SelfAttention, self).__init__()
