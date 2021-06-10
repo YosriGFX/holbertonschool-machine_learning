@@ -11,7 +11,6 @@ def answer_loop(reference):
         'bert-large-uncased-whole-word-masking-finetuned-squad'
     )
     model = hub.load('https://tfhub.dev/see--/bert-uncased-tf2-qa/1')
-    exit_list = ['exit', 'quit', 'goodbye', 'bye']
     while True:
         print(
             'Q:', end=' '
