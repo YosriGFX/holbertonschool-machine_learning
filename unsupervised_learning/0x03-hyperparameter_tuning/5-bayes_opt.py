@@ -55,7 +55,7 @@ class BayesianOptimization:
 
     def optimize(self, iterations=100):
         '''optimizes the black-box function'''
-        for __ in range(0, iterations):
+        for _ in range(0, iterations):
             X_next = self.acquisition()[0]
             if X_next in self.gp.X:
                 break
@@ -63,10 +63,9 @@ class BayesianOptimization:
                 X_next,
                 self.f(X_next)
             )
-        if self.minimize:
-            a = np.argmin(self.gp.Y)
-        else:
-            a = np.argmax(self.gp.Y)
+        a = np.argmin(
+            self.gp.Y
+        ) if self.minimize is True else np.argmax(self.gp.Y)
         X_opt = self.gp.X[a]
         Y_opt = self.gp.Y[a]
         return X_opt, Y_opt
