@@ -9,19 +9,16 @@ def validator(P):
         return False
     if P.shape[0] != P.shape[1] or np.sum(P, axis=1).all() != 1:
         return False
-    if all(np.diag(P) == 1):
-        return True
     if not any(np.diag(P) == 1):
         return False
-    return 'continue'
+    return True
 
 
 def absorbing(P):
     '''determines if a markov chain is absorbing'''
-    checker = validator(P)
-    if type(checker) == bool:
-        return checker
-    else:
+    if validator(P):
+        if all(np.diag(P) == 1):
+            return True
         a = np.where(np.diag(P) == 1)
         b = np.sum(P[a[0]], axis=0)
         for i in range(P.shape[0]):
@@ -29,3 +26,5 @@ def absorbing(P):
             if (inter == 1).any():
                 b[i] = 1
         return b.all()
+    else:
+        return False
