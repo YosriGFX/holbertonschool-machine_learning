@@ -17,14 +17,12 @@ class BayesianOptimization:
         l=1,
         sigma_f=1,
         xsi=0.01,
-        Minimize=True
+        minimize=True
     ):
         '''Class constructor'''
         self.f = f
         self.gp = GP(X_init, Y_init, l, sigma_f)
-        Min, Max = bounds
-        self.X_s = np.linspace(
-            Min, Max, ac_samples
-        ).reshape(-1, 1)
+        min, max = bounds
+        self.X_s = np.linspace(min, max, ac_samples).reshape(-1, 1)
         self.xsi = xsi
-        self.Minimize = Minimize
+        self.minimize = minimize
