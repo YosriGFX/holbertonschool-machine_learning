@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 '''1. Initialize Q-table'''
+import numpy as np
 
 
 def q_init(env):
