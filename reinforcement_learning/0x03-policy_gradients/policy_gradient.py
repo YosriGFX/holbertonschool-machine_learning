@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''0. Simple Policy function'''
+'''1. Compute the Monte-Carlo policy gradient'''
 import numpy as np
 
 
