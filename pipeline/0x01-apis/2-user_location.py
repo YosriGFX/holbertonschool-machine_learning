@@ -12,7 +12,7 @@ def get_location(url):
     if request.status_code == 403:
         retry = request.headers['X-Ratelimit-Reset']
         seconds = int(retry) - int(datetime.now().timestamp())
-        print('Reset in {} min'.format(seconds / 60))
+        print('Reset in {} min'.format(seconds // 60))
     elif request.status_code == 404:
         print('Not found')
     elif request.status_code == 200:
