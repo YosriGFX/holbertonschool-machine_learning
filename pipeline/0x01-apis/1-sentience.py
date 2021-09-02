@@ -11,10 +11,9 @@ def sentientPlanets():
     while request['next'] is not None:
         request = requests.get(request['next']).json()
         for row in request['results']:
-            if row['designation'] == 'sentient':
-                url = row['homeworld']
-                if url is not None:
-                    planet = requests.get(url).json()['name']
-                    if planet not in sentient:
-                        sentient.append(planet)
+            url = row['homeworld']
+            if url is not None:
+                planet = requests.get(url).json()['name']
+                if planet not in sentient:
+                    sentient.append(planet)
     return sentient
