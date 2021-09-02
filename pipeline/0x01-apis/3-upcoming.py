@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 '''3. What will be next?'''
-from datetime import datetime
 import requests
 
 
