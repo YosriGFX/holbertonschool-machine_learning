@@ -11,11 +11,10 @@ def get_launches():
     request = requests.get(url).json()
     latest = {}
     for row in request:
-        if 'date_unix' not in latest or row['date_unix'] < latest['date_unix']:
+        if 'date_unix' not in latest or (time_now < row['date_unix'] < latest['date_unix']):
             latest = row
     launch_name = latest['name']
-    launch_date = latest['date_unix']
-    launch_date = datetime.fromtimestamp(launch_date).isoformat()
+    launch_date = latest['date_local']
     rocket_name = requests.get(
         'https://api.spacexdata.com/v4/rockets/' + latest['rocket']
     ).json()['name']
