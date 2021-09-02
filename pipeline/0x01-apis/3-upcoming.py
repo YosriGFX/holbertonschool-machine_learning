@@ -1,18 +1,14 @@
 #!/usr/bin/env python3
 '''3. What will be next?'''
-from datetime import datetime
 import requests
 
 
 def get_launches():
     '''return launches'''
-    time_now = datetime.now().timestamp()
     url = 'https://api.spacexdata.com/v4/launches/upcoming'
     request = requests.get(url).json()
-    latest = {}
-    for row in request:
-        if 'date_unix' not in latest or (time_now < row['date_unix'] < latest['date_unix']):
-            latest = row
+    request.sort(key=lambda json: json['date_unix'])
+    latest = request[0]
     launch_name = latest['name']
     launch_date = latest['date_local']
     rocket_name = requests.get(
