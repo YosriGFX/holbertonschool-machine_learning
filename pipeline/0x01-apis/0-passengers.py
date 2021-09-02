@@ -7,17 +7,17 @@ def availableShips(passengerCount):
     '''returns the list of ships that can
     hold a given number of passengers'''
     ships = []
-    result = []
     request = {'next': 'https://swapi-api.hbtn.io/api/starships/'}
     while request['next'] is not None:
         url = request['next']
         request = requests.get(url).json()
-        result += request['results']
-    for row in result:
-        try:
-            passenger = int(row['passengers'])
-        except ValueError:
-            passenger = 0
-        if passenger >= passengerCount:
-            ships.append(row['name'])
+        for row in request['results']:
+            try:
+                passenger = row['passengers']
+                passenger = ''.join(passenger.split(','))
+                passenger = int(passenger)
+            except ValueError:
+                passenger = 0
+            if passenger >= passengerCount:
+                ships.append(row['name'])
     return ships
