@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 '''3. What will be next?'''
+from datetime import datetime
 import requests
 
 
@@ -13,7 +14,8 @@ def get_launches():
         if 'date_unix' not in latest or row['date_unix'] < latest['date_unix']:
             latest = row
     launch_name = latest['name']
-    launch_date = latest['date_local']
+    launch_date = latest['date_unix']
+    launch_date = datetime.fromtimestamp(launch_date).isoformat()
     rocket_name = requests.get(
         'https://api.spacexdata.com/v4/rockets/' + latest['rocket']
     ).json()['name']
