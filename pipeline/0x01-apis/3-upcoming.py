@@ -11,12 +11,8 @@ def get_launches():
     request = requests.get(url).json()
     latest = {}
     for row in request:
-        if 'date_unix' in latest:
-            if time_now < row['date_unix'] < latest['date_unix']:
-                latest = row
-        else:
-            if time_now < row['date_unix']:
-                latest = row
+        if 'date_unix' not in latest or row['date_unix'] < latest['date_unix']:
+            latest = row
     launch_name = latest['name']
     launch_date = latest['date_local']
     rocket_name = requests.get(
