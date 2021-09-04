@@ -1,0 +1,14 @@
+-- 21. Safe divide
+DROP FUNCTION IF EXISTS SafeDiv;
+DELIMITER $$
+CREATE FUNCTION SafeDiv(a INT, b INT) RETURNS FLOAT
+BEGIN
+DECLARE something FLOAT;
+IF b=0 THEN
+SET something=0;
+ELSE
+SET something = (a / b);
+END IF;
+RETURN something;
+END$$
+DELIMITER ;
