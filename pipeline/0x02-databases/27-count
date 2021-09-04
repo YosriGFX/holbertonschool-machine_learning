@@ -1,0 +1,2 @@
+// 27. Count
+db.school.count()
