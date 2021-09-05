@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 '''41. Log stats'''
 from pymongo import MongoClient
-from bson.son import SON
 
 
 if __name__ == "__main__":
@@ -21,14 +20,11 @@ if __name__ == "__main__":
         )
     ))
     pipeline = [
-        {"$group": {
-            "_id": "$ip",
-            "count": {"$sum": 1}
-        }},
-        {"$sort": SON([("count", -1)])}
+        {"$sortByCount": '$ip'},
+        {"$limit": 10},
+        {"$sort": {"ip": -1}},
     ]
-    agg = list(school.aggregate(pipeline=pipeline))[:10]
-    agg[0], agg[1], agg[2] = agg[1], agg[2], agg[0]
+    agg = school.aggregate(pipeline=pipeline)
     print("IPs:")
-    for item in agg:
-        print('\t{}: {}'.format(item['_id'], item['count']))
+    for ip in agg:
+        print('\t{}: {}'.format(ip['_id'], ip['count']))
