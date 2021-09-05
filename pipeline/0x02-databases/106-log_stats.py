@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''41. Log stats - new version'''
+'''41. Log stats'''
 from pymongo import MongoClient
 from bson.son import SON
 
